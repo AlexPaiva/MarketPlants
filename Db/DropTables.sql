@@ -1,0 +1,4 @@
+USE LojaDePlantas;
+DROP TABLE IF EXISTS Vendas;
+DROP TABLE IF EXISTS Plantas;
+DROP TABLE IF EXISTS Clientes;
