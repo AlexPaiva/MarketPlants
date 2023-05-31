@@ -19,3 +19,5 @@ C:\rafarlho\bd\projeto\rep\MarketPlants\MarketPlants\MarketPlants\obj\Debug\net6
 C:\rafarlho\bd\projeto\rep\MarketPlants\MarketPlants\MarketPlants\obj\Debug\net6.0-windows\MarketPlants.Favourites.resources
 C:\rafarlho\bd\projeto\rep\MarketPlants\MarketPlants\MarketPlants\obj\Debug\net6.0-windows\MarketPlants.Profile.resources
 C:\rafarlho\bd\projeto\rep\MarketPlants\MarketPlants\MarketPlants\obj\Debug\net6.0-windows\MarketPlants.Home.resources
+C:\rafarlho\bd\projeto\rep\MarketPlants\MarketPlants\MarketPlants\obj\Debug\net6.0-windows\MarketPlants.Cart.resources
+C:\rafarlho\bd\projeto\rep\MarketPlants\MarketPlants\MarketPlants\obj\Debug\net6.0-windows\MarketPlants.AddPlant.resources

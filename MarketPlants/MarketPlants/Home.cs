@@ -31,5 +31,63 @@ namespace MarketPlants
         {
 
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Cart cart = new Cart();
+            cart.Show();
+            this.Close();    
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Favourites fav = new Favourites();  
+            fav.Show(); 
+            this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Profile profile = new Profile();
+            profile.Show(); 
+            this.Close();    
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AddPlant plant = new AddPlant();
+            plant.Show();
+            this.Close();
+        }
     }
 }

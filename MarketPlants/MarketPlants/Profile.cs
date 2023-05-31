@@ -19,36 +19,66 @@ namespace MarketPlants
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Home mainpage = new Home();
-            mainpage.Show();
-            this.Close();
+            
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            //Cart cart = new Cart();
-            //cart.Show();
-            //this.Close();
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Favourites favourites = new Favourites();
-            favourites.Show();
-            this.Hide();
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Profile profile = new Profile();
-            profile.Show();
-            this.Hide();
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            EntryPoint entryPoint = new EntryPoint();
-            entryPoint.Show();
-            this.Hide();
+           
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Home mainpage = new Home();
+            mainpage.Show();
+            this.Close();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Cart cart = new Cart(); 
+            cart.Show();    
+            this.Close();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            Favourites fav = new Favourites();
+            fav.Show(); 
+            this.Close();   
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            EntryPoint entry = new EntryPoint();    
+            entry.Show();
+            this.Close();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AddPlant plant = new AddPlant();
+            plant.Show();
+            this.Close();
         }
     }
 }
