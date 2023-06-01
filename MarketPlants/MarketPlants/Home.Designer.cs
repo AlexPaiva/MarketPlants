@@ -42,11 +42,12 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button5
@@ -181,7 +182,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Green;
-            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.ForeColor = System.Drawing.Color.Yellow;
             this.groupBox2.Location = new System.Drawing.Point(281, 83);
@@ -189,16 +190,6 @@
             this.groupBox2.Size = new System.Drawing.Size(493, 243);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 95);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(444, 15);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Aqui  mostrar todas  as plantas, não esquecer do botão add to cart, add to favori" +
-    "tes";
             // 
             // button6
             // 
@@ -209,6 +200,16 @@
             this.button6.Text = "Add Plant";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 37);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(481, 200);
+            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Home
             // 
@@ -233,6 +234,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -252,7 +254,7 @@
         private TextBox textBox1;
         private CheckBox checkBox1;
         private GroupBox groupBox2;
-        private Label label3;
         private Button button6;
+        private DataGridView dataGridView1;
     }
 }

@@ -7,19 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace MarketPlants
 {
     public partial class Home : Form
-    {
+    {   
+        
         public Home()
         {
+
             InitializeComponent();
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -88,6 +89,11 @@ namespace MarketPlants
             AddPlant plant = new AddPlant();
             plant.Show();
             this.Close();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
