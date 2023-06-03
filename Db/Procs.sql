@@ -1,4 +1,16 @@
 -- Procs.sql
+--Fetch 1 plants details
+Use MarketPlants
+Go
+CREATE PROCEDURE GetPlantDetails
+    @NomeComum NVARCHAR(255)
+AS
+BEGIN
+    SELECT *
+    FROM MarketPlants.Planta
+    WHERE NomeComum = @NomeComum;
+END;
+--
 CREATE PROCEDURE CriarUtilizador
     @Username NVARCHAR(255),
     @Senha NVARCHAR(255)
@@ -88,4 +100,52 @@ BEGIN
     VALUES (@nextCarrinhoID, @plantaID, @quantidade, 0);
 
     SELECT 'Venda inserida com sucesso.' AS Result;
+END;
+--Adicionar Planta Favoritos
+CREATE PROCEDURE AdicionarPlantaFavoritos
+    @Username NVARCHAR(255),
+    @NomeComum NVARCHAR(255)
+AS
+BEGIN
+    -- Verificar se a planta já está nos favoritos do utilizador
+    IF EXISTS (
+        SELECT 1
+        FROM MarketPlants.Favoritos
+        WHERE Username = @Username
+          AND NomeComum = @NomeComum
+    )
+    BEGIN
+        -- A planta já está nos favoritos, não é necessário adicionar novamente
+        RETURN;
+    END;
+
+    -- Inserir a planta nos favoritos do utilizador
+    INSERT INTO MarketPlants.Favoritos (Username, NomeComum)
+    VALUES (@Username, @NomeComum);
+END;
+
+--Adicionar Planta
+CREATE PROCEDURE AdicionarPlanta
+    @NomeCientifico NVARCHAR(255),
+    @NomeComum NVARCHAR(255),
+    @Reino NVARCHAR(255),
+    @Familia NVARCHAR(255),
+    @Ambiente NVARCHAR(255),
+    @Caracteristicas NVARCHAR(MAX)
+AS
+BEGIN
+    -- Verificar se a planta já existe pelo nome científico
+    IF EXISTS (
+        SELECT 1
+        FROM MarketPlants.Planta
+        WHERE NomeCientifico = @NomeCientifico
+    )
+    BEGIN
+        -- A planta já existe, não é necessário adicionar novamente
+        RETURN;
+    END;
+
+    -- Inserir a nova planta na tabela Planta
+    INSERT INTO MarketPlants.Planta (NomeCientifico, NomeComum, Reino, Familia, Ambiente, Caracteristicas)
+    VALUES (@NomeCientifico, @NomeComum, @Reino, @Familia, @Ambiente, @Caracteristicas);
 END;

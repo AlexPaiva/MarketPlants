@@ -1,19 +1,36 @@
 -- Views.sql
-CREATE VIEW MarketPlants.TodosArtigos AS
-SELECT
-    A.ID_Artigo,
-    A.Descricao AS DescricaoArtigo,
-    A.Preco,
-    P.NomeCientifico,
-    P.NomeComum,
-    P.Reino,
-    P.Familia,
-    P.Ambiente,
-    P.Caracteristicas
-FROM
-    MarketPlants.Artigo A
-    INNER JOIN MarketPlants.Planta P ON A.ID_Artigo = P.ID_Artigo;
-	
+--Views para plantas no home page
+Use MarketPlants
+Go
+CREATE VIEW vw_PlantaHome
+AS
+SELECT 
+    NomeComum AS Nome, 
+    NomeCientifico AS [Nome Cientifico], 
+    CONCAT(Reino, ' ', Familia) AS Classification,
+    Ambiente, 
+    Caracteristicas 
+FROM 
+    MarketPlants.Planta
+
+--View plantas favoritas
+CREATE VIEW vw_PlantasFavoritas AS
+SELECT f.Username, p.NomeCientifico, p.NomeComum, p.Reino, p.Familia, p.Ambiente, p.Caracteristicas
+FROM MarketPlants.Favoritos f
+JOIN MarketPlants.Planta p ON f.NomeComum = p.NomeComum;
+
+--View Plantas preço
+CREATE VIEW vw_PlantasPreco AS
+SELECT p.NomeCientifico, p.NomeComum, p.Reino, p.Familia, p.Ambiente, p.Caracteristicas, a.Preco
+FROM MarketPlants.Planta p
+JOIN MarketPlants.Artigo a ON p.ID_Artigo = a.ID_Artigo;
+
+--View Plantas Categoria
+CREATE VIEW vw_PlantasCategoria AS
+SELECT c.Nome AS Categoria, p.NomeCientifico, p.NomeComum, p.Reino, p.Familia, p.Ambiente, p.Caracteristicas
+FROM MarketPlants.Categoria c
+JOIN MarketPlants.Planta p ON c.ID_Categoria = p.ID_Categoria;
+
 --View For artigos por vendedor
 SELECT * FROM MarketPlants.TodosArtigos;
 

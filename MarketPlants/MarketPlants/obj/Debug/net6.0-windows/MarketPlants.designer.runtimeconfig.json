@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\raffa\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\raffa\\.nuget\\packages"
+      "C:\\Users\\guiml\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\guiml\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

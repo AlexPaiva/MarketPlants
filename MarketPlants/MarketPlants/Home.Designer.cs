@@ -37,17 +37,20 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAddToCart = new System.Windows.Forms.Button();
+            this.plantDetailsProc = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.listaPlantas = new System.Windows.Forms.DataGridView();
             this.button6 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.usernameHello = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaPlantas)).BeginInit();
             this.SuspendLayout();
             // 
             // button5
@@ -126,6 +129,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Green;
+            this.groupBox1.Controls.Add(this.btnAddToCart);
+            this.groupBox1.Controls.Add(this.plantDetailsProc);
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBox1);
@@ -136,6 +141,28 @@
             this.groupBox1.Size = new System.Drawing.Size(250, 243);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
+            // 
+            // btnAddToCart
+            // 
+            this.btnAddToCart.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btnAddToCart.Location = new System.Drawing.Point(137, 91);
+            this.btnAddToCart.Name = "btnAddToCart";
+            this.btnAddToCart.Size = new System.Drawing.Size(86, 23);
+            this.btnAddToCart.TabIndex = 24;
+            this.btnAddToCart.Text = "Add to Cart";
+            this.btnAddToCart.UseVisualStyleBackColor = true;
+            this.btnAddToCart.Visible = false;
+            this.btnAddToCart.Click += new System.EventHandler(this.btnAddToCart_Click);
+            // 
+            // plantDetailsProc
+            // 
+            this.plantDetailsProc.ForeColor = System.Drawing.Color.LemonChiffon;
+            this.plantDetailsProc.Location = new System.Drawing.Point(6, 121);
+            this.plantDetailsProc.Name = "plantDetailsProc";
+            this.plantDetailsProc.Size = new System.Drawing.Size(228, 116);
+            this.plantDetailsProc.TabIndex = 23;
+            this.plantDetailsProc.Text = "No Plant Selected";
+            this.plantDetailsProc.Click += new System.EventHandler(this.plantDetailsProc_Click);
             // 
             // checkBox2
             // 
@@ -182,7 +209,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Green;
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.listaPlantas);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.ForeColor = System.Drawing.Color.Yellow;
             this.groupBox2.Location = new System.Drawing.Point(281, 83);
@@ -190,6 +217,16 @@
             this.groupBox2.Size = new System.Drawing.Size(493, 243);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
+            // 
+            // listaPlantas
+            // 
+            this.listaPlantas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listaPlantas.Location = new System.Drawing.Point(6, 37);
+            this.listaPlantas.Name = "listaPlantas";
+            this.listaPlantas.RowTemplate.Height = 25;
+            this.listaPlantas.Size = new System.Drawing.Size(481, 200);
+            this.listaPlantas.TabIndex = 1;
+            this.listaPlantas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaPlantas_CellContentClick);
             // 
             // button6
             // 
@@ -201,21 +238,23 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // dataGridView1
+            // usernameHello
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 37);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(481, 200);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.usernameHello.AutoSize = true;
+            this.usernameHello.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.usernameHello.Location = new System.Drawing.Point(502, 47);
+            this.usernameHello.Name = "usernameHello";
+            this.usernameHello.Size = new System.Drawing.Size(68, 30);
+            this.usernameHello.TabIndex = 28;
+            this.usernameHello.Text = "Olá x!";
+            this.usernameHello.Click += new System.EventHandler(this.usernameHello_Click);
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 338);
+            this.Controls.Add(this.usernameHello);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -234,8 +273,9 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaPlantas)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -255,6 +295,9 @@
         private CheckBox checkBox1;
         private GroupBox groupBox2;
         private Button button6;
-        private DataGridView dataGridView1;
+        private DataGridView listaPlantas;
+        private Label usernameHello;
+        private Label plantDetailsProc;
+        private Button btnAddToCart;
     }
 }
