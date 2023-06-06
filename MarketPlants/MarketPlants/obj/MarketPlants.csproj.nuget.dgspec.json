@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\guiml\\Desktop\\Nova pasta\\MarketPlants\\MarketPlants\\MarketPlants.csproj": {}
+    "C:\\Users\\Alex\\Downloads\\mm\\MarketPlants\\MarketPlants\\MarketPlants.csproj": {}
   },
   "projects": {
-    "C:\\Users\\guiml\\Desktop\\Nova pasta\\MarketPlants\\MarketPlants\\MarketPlants.csproj": {
+    "C:\\Users\\Alex\\Downloads\\mm\\MarketPlants\\MarketPlants\\MarketPlants.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\guiml\\Desktop\\Nova pasta\\MarketPlants\\MarketPlants\\MarketPlants.csproj",
+        "projectUniqueName": "C:\\Users\\Alex\\Downloads\\mm\\MarketPlants\\MarketPlants\\MarketPlants.csproj",
         "projectName": "MarketPlants",
-        "projectPath": "C:\\Users\\guiml\\Desktop\\Nova pasta\\MarketPlants\\MarketPlants\\MarketPlants.csproj",
-        "packagesPath": "C:\\Users\\guiml\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\guiml\\Desktop\\Nova pasta\\MarketPlants\\MarketPlants\\obj\\",
+        "projectPath": "C:\\Users\\Alex\\Downloads\\mm\\MarketPlants\\MarketPlants\\MarketPlants.csproj",
+        "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Alex\\Downloads\\mm\\MarketPlants\\MarketPlants\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\guiml\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -56,24 +56,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.16, 6.0.16]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -82,7 +64,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

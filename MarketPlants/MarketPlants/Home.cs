@@ -17,7 +17,7 @@ namespace MarketPlants
 
         bool plantInCart = false;
 
-        string connectionString = @"Data Source=DESKTOP-SOPSA3N\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;TrustServerCertificate=true";
+        string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
 
 
         public Home(string username = "User")

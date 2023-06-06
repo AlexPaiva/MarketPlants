@@ -5,7 +5,7 @@ Create schema MarketPlants
 Go
 
 CREATE TABLE MarketPlants.Tipo(
-	Email NVARCHAR(255) unique not null CHECK (Email LIKE '%@%.%'),
+	Email NVARCHAR(255) unique not null CHECK (Email LIKE '%@%.com'),
 	NIF	INT unique not null CHECK (NIF >= 000000000 AND NIF <= 999999999),
 	Primary Key (Email,NIF)
 );
