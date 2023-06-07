@@ -42,20 +42,21 @@ BEGIN
 END
 --
 --Trigger 3 - Check se artigo já em carrinho
-CREATE TRIGGER CheckArtigoInCarrinho
-ON MarketPlants.CarrinhoArtigo
-FOR INSERT
-AS
-BEGIN
-    IF EXISTS (
-        SELECT 1
-        FROM inserted i
-        INNER JOIN MarketPlants.CarrinhoArtigo ca ON i.ID_Artigo = ca.ID_Artigo
-        WHERE i.ID_Carrinho = ca.ID_Carrinho
-    )
-    BEGIN
-        RAISERROR ('Artigo already exists in Cart.', 16, 1)
-        ROLLBACK TRANSACTION
-    END
-END
+--CREATE TRIGGER CheckArtigoInCarrinho
+--ON MarketPlants.CarrinhoArtigo
+--FOR INSERT
+--AS
+--BEGIN
+--    IF EXISTS (
+--        SELECT 1
+--        FROM inserted i
+--        INNER JOIN MarketPlants.CarrinhoArtigo ca ON i.ID_Artigo = ca.ID_Artigo
+--        WHERE i.ID_Carrinho = ca.ID_Carrinho
+--    )
+--    BEGIN
+--        RAISERROR ('Artigo already exists in Cart.', 16, 1)
+--        ROLLBACK TRANSACTION
+--    END
+--END;
+--select * from MarketPlants.CarrinhoArtigo
 --

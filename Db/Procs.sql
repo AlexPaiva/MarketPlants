@@ -447,7 +447,7 @@ END
 USE MarketPlants
 GO
 --PROC 16 - Get o Carrinho com ID
-CREATE PROCEDURE GetArtigosByCarrinhoID
+CREATE OR ALTER PROCEDURE GetArtigosByCarrinhoID
     @carrinhoID INT
 AS
 BEGIN
@@ -476,11 +476,36 @@ BEGIN
 
     -- Get the Artigo ID
     DECLARE @artigoID INT;
-    SELECT @artigoID = ID_Artigo FROM MarketPlants.Artigo WHERE ID_Vendedor = (SELECT ID_Vendedor FROM MarketPlants.Vendedor WHERE Username = @username) AND ID_Artigo = (SELECT ID_Artigo FROM MarketPlants.Planta WHERE NomeComum = @commonName);
+    SELECT @artigoID = A.ID_Artigo
+    FROM MarketPlants.Artigo AS A
+    JOIN MarketPlants.Planta AS P ON A.ID_Artigo = P.ID_Artigo
+    WHERE P.NomeComum = @commonName;
 
     -- Insert the Artigo into CarrinhoArtigo
-    INSERT INTO MarketPlants.CarrinhoArtigo (ID_Carrinho, ID_Artigo)
-    VALUES (@carrinhoID, @artigoID);
+    IF @artigoID IS NOT NULL
+    BEGIN
+        INSERT INTO MarketPlants.CarrinhoArtigo (ID_Carrinho, ID_Artigo)
+        VALUES (@carrinhoID, @artigoID);
+    END
+    ELSE
+    BEGIN
+        -- Handle the case where Artigo is not found
+        RAISERROR('The Artigo does not exist.', 16, 1);
+    END
 END
 --
+--Proc 18 - Checkout! (Clear Cart)
+CREATE OR ALTER PROCEDURE ClearCart
+    @username NVARCHAR(255)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Get the Comprador ID
+    DECLARE @compradorID INT;
+    SELECT @compradorID = ID_Comprador FROM MarketPlants.Comprador WHERE Username = @username;
+
+    -- Delete all items from CarrinhoArtigo associated with the Comprador
+    DELETE FROM MarketPlants.CarrinhoArtigo WHERE ID_Carrinho IN (SELECT ID_Carrinho FROM MarketPlants.Carrinho WHERE ID_Comprador = @compradorID);
+END
 --

@@ -29,7 +29,7 @@ namespace MarketPlants
         //Quando o Form carrega, verificar se o utilizador é vendedor ou comprador
         private void Profile_Load(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -165,7 +165,7 @@ namespace MarketPlants
         //Guardar alterações feitas ao perfil
         private void editProfileButton_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
             string phoneNumber = UserPhoneBox.Text;
             // Check if the phone number is in the correct format
@@ -208,7 +208,7 @@ namespace MarketPlants
         //Clicar botão de atualizar informações sobre o vendedor
         private void sellerSaveBut_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -232,7 +232,7 @@ namespace MarketPlants
         //Clicar botão de atualizar informações de pagamento do Comprador
         private void saveBuyerSettings_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -282,7 +282,7 @@ namespace MarketPlants
         //Visit Add Plant Page
         private void button6_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

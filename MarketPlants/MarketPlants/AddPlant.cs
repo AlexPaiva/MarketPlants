@@ -59,7 +59,7 @@ namespace MarketPlants
         //Adicionar uma nova Planta
         private void addNewPlant_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

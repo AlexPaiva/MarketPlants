@@ -48,7 +48,7 @@ namespace MarketPlants
         //Visit 'AddPlant' section
         private void button7_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -99,13 +99,14 @@ namespace MarketPlants
 
         private void Cart_Load(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            //string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
-                // Step 1: Check and create the Carrinho using the stored procedure
+                //Check and create the Carrinho using the stored procedure
                 using (SqlCommand cmdCheckAndCreateCarrinho = new SqlCommand("CheckAndCreateCarrinho", conn))
                 {
                     cmdCheckAndCreateCarrinho.CommandType = CommandType.StoredProcedure;
@@ -117,7 +118,56 @@ namespace MarketPlants
 
                     int carrinhoID = (int)cmdCheckAndCreateCarrinho.Parameters["@carrinhoID"].Value;
 
-                    // Step 2: Retrieve the Artigo details using the stored procedure
+                    //Retrieve the Artigo details using the stored procedure
+                    DataTable dataTable = new DataTable();
+
+                    using (SqlCommand cmdRetrieveArtigos = new SqlCommand("GetArtigosByCarrinhoID", conn))
+                    {
+                        cmdRetrieveArtigos.CommandType = CommandType.StoredProcedure;
+                        cmdRetrieveArtigos.Parameters.AddWithValue("@carrinhoID", carrinhoID);
+
+                        using (SqlDataReader reader = cmdRetrieveArtigos.ExecuteReader())
+                            dataTable.Load(reader);
+
+                        // Bind the Artigo details to the gridCarrinho DataGridView
+                        gridCarrinho.DataSource = dataTable;
+                    }
+                }
+            }
+        }
+
+        //Checkout, clear cart
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                // Clear the cart for the user
+                using (SqlCommand cmdClearCart = new SqlCommand("ClearCart", conn))
+                {
+                    cmdClearCart.CommandType = CommandType.StoredProcedure;
+                    cmdClearCart.Parameters.AddWithValue("@username", Username);
+
+                    cmdClearCart.ExecuteNonQuery();
+
+                    MessageBox.Show("Purchase Completed! Thank you for using MarketPlants.");
+                }
+
+                using (SqlCommand cmdCheckAndCreateCarrinho = new SqlCommand("CheckAndCreateCarrinho", conn))
+                {
+                    cmdCheckAndCreateCarrinho.CommandType = CommandType.StoredProcedure;
+
+                    cmdCheckAndCreateCarrinho.Parameters.AddWithValue("@username", Username);
+                    cmdCheckAndCreateCarrinho.Parameters.Add("@carrinhoID", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+                    cmdCheckAndCreateCarrinho.ExecuteNonQuery();
+
+                    int carrinhoID = (int)cmdCheckAndCreateCarrinho.Parameters["@carrinhoID"].Value;
+
+                    //Retrieve the Artigo details using the stored procedure
                     DataTable dataTable = new DataTable();
 
                     using (SqlCommand cmdRetrieveArtigos = new SqlCommand("GetArtigosByCarrinhoID", conn))
@@ -130,7 +180,7 @@ namespace MarketPlants
                         dataTable.Load(reader);
                     }
 
-                    // Step 3: Bind the Artigo details to the gridCarrinho DataGridView
+                    //Bind the Artigo details to the gridCarrinho DataGridView
                     gridCarrinho.DataSource = dataTable;
                 }
             }

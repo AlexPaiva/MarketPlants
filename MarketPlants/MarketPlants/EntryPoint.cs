@@ -82,7 +82,7 @@ namespace MarketPlants
             var result = MessageBox.Show("Do you want to register as a Buyer? (Select No if you want to be a Seller)", "Registration Type (Buyer or Seller)", MessageBoxButtons.YesNo);
             string userType = result == DialogResult.Yes ? "C" : "V";
 
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -123,7 +123,7 @@ namespace MarketPlants
         {
             // Define connection string
             //string connectionString = @"Data Source=(local);Initial Catalog=MarketPlants;Integrated Security=True";
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
             // Create SQL command to find user with matching username and password
             string query = "SELECT COUNT(*) FROM MarketPlants.Utilizador WHERE Username = @Username AND Senha = @Password";
@@ -285,7 +285,7 @@ namespace MarketPlants
 
             var result = MessageBox.Show("Do you want to register as a Buyer? (Select No if you want to be a Seller)", "Registration Type (Buyer or Seller)", MessageBoxButtons.YesNo);
             string userType = result == DialogResult.Yes ? "C" : "V";
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

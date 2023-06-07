@@ -21,7 +21,7 @@ namespace MarketPlants
 
         bool plantInCart = false;
 
-        string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+        string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
 
         public Home(string username)
@@ -186,7 +186,7 @@ namespace MarketPlants
         //Botão de efetuar pesquisa, que filtra as coisas na tabela
         private void searchButton_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -268,7 +268,7 @@ namespace MarketPlants
         //Visit 'AddPlant' section
         private void button6_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -329,8 +329,7 @@ namespace MarketPlants
 
         private void btnAddToCart_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=MarketPlants;Integrated Security=True;Encrypt=False";
-
+            string connectionString = @"Data Source=tcp:mednat.ieeta.pt\SQLSERVER,8101;Initial Catalog=p3g4;Persist Security Info=True; uid=p3g4;password=161852733@BDP;";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -390,6 +389,13 @@ namespace MarketPlants
             buttonGoBack.Visible = false;
             flowerPanel.Visible = false;
             btnAddToCart.Visible = false;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            EntryPoint entry = new EntryPoint();
+            entry.Show();
+            this.Close();
         }
     }
 }

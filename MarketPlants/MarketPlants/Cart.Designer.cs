@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cart));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             button4 = new Button();
             button2 = new Button();
             button1 = new Button();
@@ -99,6 +100,7 @@
             button5.TabIndex = 26;
             button5.Text = "$ Checkout! $";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // label1
             // 
@@ -130,11 +132,19 @@
             // gridCarrinho
             // 
             gridCarrinho.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridCarrinho.Location = new Point(15, 55);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.LawnGreen;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            gridCarrinho.DefaultCellStyle = dataGridViewCellStyle1;
+            gridCarrinho.Location = new Point(60, 55);
             gridCarrinho.Name = "gridCarrinho";
             gridCarrinho.RowHeadersWidth = 51;
             gridCarrinho.RowTemplate.Height = 29;
-            gridCarrinho.Size = new Size(862, 330);
+            gridCarrinho.Size = new Size(773, 330);
             gridCarrinho.TabIndex = 27;
             // 
             // button6
