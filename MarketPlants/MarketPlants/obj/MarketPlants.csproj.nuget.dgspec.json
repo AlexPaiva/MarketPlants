@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alex\\Downloads\\mm\\MarketPlants\\MarketPlants\\MarketPlants.csproj": {}
+    "C:\\Users\\Alex\\Downloads\\23\\BD\\Project\\GITI\\MarketPlants\\MarketPlants\\MarketPlants.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alex\\Downloads\\mm\\MarketPlants\\MarketPlants\\MarketPlants.csproj": {
+    "C:\\Users\\Alex\\Downloads\\23\\BD\\Project\\GITI\\MarketPlants\\MarketPlants\\MarketPlants.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alex\\Downloads\\mm\\MarketPlants\\MarketPlants\\MarketPlants.csproj",
+        "projectUniqueName": "C:\\Users\\Alex\\Downloads\\23\\BD\\Project\\GITI\\MarketPlants\\MarketPlants\\MarketPlants.csproj",
         "projectName": "MarketPlants",
-        "projectPath": "C:\\Users\\Alex\\Downloads\\mm\\MarketPlants\\MarketPlants\\MarketPlants.csproj",
+        "projectPath": "C:\\Users\\Alex\\Downloads\\23\\BD\\Project\\GITI\\MarketPlants\\MarketPlants\\MarketPlants.csproj",
         "packagesPath": "C:\\Users\\Alex\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alex\\Downloads\\mm\\MarketPlants\\MarketPlants\\obj\\",
+        "outputPath": "C:\\Users\\Alex\\Downloads\\23\\BD\\Project\\GITI\\MarketPlants\\MarketPlants\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alex\\AppData\\Roaming\\NuGet\\NuGet.Config",

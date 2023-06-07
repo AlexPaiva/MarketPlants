@@ -1,7 +1,7 @@
 
 Use MarketPlants
 Go
-Create schema MarketPlants
+Create schema MarketPlants;
 Go
 
 CREATE TABLE MarketPlants.Tipo(
@@ -11,12 +11,12 @@ CREATE TABLE MarketPlants.Tipo(
 );
 CREATE TABLE MarketPlants.Utilizador(
 	Username NVARCHAR(255) unique NOT NULL,
-	Senha NVARCHAR(255) NOT NULL,
+	Senha NVARCHAR(255), -- Tiramos o NOT NULL pois ao editar o perfil podemos querer manter a Senha
 	Primary key (Username)
 );
 CREATE TABLE MarketPlants.Empresa(
     Descricao NVARCHAR(255),
-    NrTelefone INT,
+    NrTelefone VARCHAR(9),
     Morada NVARCHAR(255),
     Nome NVARCHAR(255) unique,
     Username NVARCHAR(255) FOREIGN KEY references MarketPlants.Utilizador(Username),
@@ -29,7 +29,7 @@ CREATE TABLE MarketPlants.Pessoa(
     UltimoNome NVARCHAR(255),
     Morada NVARCHAR(255),
     Genero NVARCHAR(255),
-    NrTelefone INT,
+    NrTelefone VARCHAR(9),
 	Username NVARCHAR(255) FOREIGN KEY references MarketPlants.Utilizador(Username),
 	NIF INT PRIMARY KEY FOREIGN KEY references MarketPlants.Tipo(NIF),
 	Email NVARCHAR(255) FOREIGN KEY references MarketPlants.Tipo(Email),
@@ -50,22 +50,8 @@ CREATE TABLE MarketPlants.Vendedor(
 	CondicoesDeLevantamentoEntrega NVARCHAR(255),
 );
 
-CREATE TABLE MarketPlants.EntidadeRegulamentadora(
-	ID_Entidade INT IDENTITY(1,1) Primary key not null ,
-	nome NVARCHAR(255) not null,
-	ID_Vendedor INT FOREIGN KEY references MarketPlants.Vendedor(ID_Vendedor),
-);
-
-CREATE TABLE MarketPlants.Catalogo(
-	NrArtigos INT,
-	Promocao INT,
-	ID_Vendedor INT IDENTITY(1,1) PRIMARY KEY FOREIGN KEY references MarketPlants.Vendedor(ID_Vendedor),
-);
-
 CREATE TABLE MarketPlants.Artigo(
 	ID_Artigo INT IDENTITY(1,1) PRIMARY KEY,
-	Descricao NVARCHAR(255),
-	Preco INT ,
 	ID_Vendedor INT FOREIGN KEY references MarketPlants.Vendedor(ID_Vendedor),
 );
 
@@ -95,24 +81,22 @@ CREATE TABLE MarketPlants.Fruto(
 	NomeCientificoFlor NVARCHAR(255) FOREIGN KEY references MarketPlants.Flor(NomeCientifico)
 );
 
-CREATE TABLE MarketPlants.Categoria(
-	ID_Categoria INT PRIMARY KEY,
-	Nome NVARCHAR(255),
-	Designacao NVARCHAR(255),
-	NomeCientificoPlanta NVARCHAR(255) FOREIGN KEY references MarketPlants.Planta(NomeCientifico)
-);
-
 CREATE TABLE MarketPlants.Carrinho(
     ID_Carrinho INT IDENTITY(1,1) PRIMARY KEY,
     ID_Comprador INT FOREIGN KEY REFERENCES MarketPlants.Comprador(ID_Comprador),
-    ID_Vendedor INT FOREIGN KEY REFERENCES MarketPlants.Vendedor(ID_Vendedor),
-    PrecoTotal INT,
+    CONSTRAINT FK_Carrinho_Comprador FOREIGN KEY (ID_Comprador) REFERENCES MarketPlants.Comprador(ID_Comprador) ON DELETE CASCADE
 );
 
 CREATE TABLE MarketPlants.CarrinhoArtigo(
     ID_Carrinho INT FOREIGN KEY REFERENCES MarketPlants.Carrinho(ID_Carrinho),
     ID_Artigo INT FOREIGN KEY REFERENCES MarketPlants.Artigo(ID_Artigo),
-    Quantidade INT,
-    Preco INT ,
+    PRIMARY KEY (ID_Carrinho, ID_Artigo)
 );
 
+USE MarketPlants
+GO
+ALTER TABLE MarketPlants.Empresa
+ADD CONSTRAINT CK_Empresa_NrTelefone CHECK (LEN(NrTelefone) = 9 AND ISNUMERIC(NrTelefone) = 1);
+
+ALTER TABLE MarketPlants.Pessoa
+ADD CONSTRAINT CK_Pessoa_NrTelefone CHECK (LEN(NrTelefone) = 9 AND ISNUMERIC(NrTelefone) = 1);

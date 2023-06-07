@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "T3qpt2O/cmG4vGB6F3uV/BNjW/LDSYGYMqGWegFA793eM6oKnNzQA+MQnrdh7zH/vscAAjLaUExgz24gYrN+HA==",
+  "dgSpecHash": "lDM3ggNvushvKJSZ35lxcw9Mo15viIvooy9nSskfibmv3KXaBpCRR+RUXiNS3UQiU+NWmxsj8P6KeU3QYcZR0w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alex\\Downloads\\mm\\MarketPlants\\MarketPlants\\MarketPlants.csproj",
+  "projectFilePath": "C:\\Users\\Alex\\Downloads\\23\\BD\\Project\\GITI\\MarketPlants\\MarketPlants\\MarketPlants.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alex\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Alex\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

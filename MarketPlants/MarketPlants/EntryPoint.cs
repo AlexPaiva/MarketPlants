@@ -29,13 +29,6 @@ namespace MarketPlants
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Home mainPage = new Home();
-            mainPage.Show();
-            this.Hide();
-        }
-
         private void loginButton_Click(object sender, EventArgs e)
         {
             string username = usernameTextBox.Text;
@@ -345,11 +338,6 @@ namespace MarketPlants
         }
 
         private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_2(object sender, EventArgs e)
         {
 
         }

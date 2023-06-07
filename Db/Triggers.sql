@@ -1,71 +1,61 @@
 -- Triggers.sql
---Triggerverificar se username é duplicado
-CREATE TRIGGER CheckDuplicateUsername
-ON Users
-AFTER INSERT, UPDATE
+--Trigger 1 - Check username is Duplicate or not
+CREATE OR ALTER TRIGGER CheckDuplicateUsername
+ON MarketPlants.Utilizador
+INSTEAD OF INSERT
 AS
 BEGIN
-    IF EXISTS (
-        SELECT Username
-        FROM Users
-        GROUP BY Username
-        HAVING COUNT(*) > 1
-    )
+    -- Check if the username already exists in the table
+    IF EXISTS (SELECT 1 FROM MarketPlants.Utilizador WHERE Username = (SELECT Username FROM inserted))
     BEGIN
-        RAISERROR ('Dois usuários com o mesmo nome não são permitidos.', 16, 1)
+        -- If the username exists, raise an error and roll back the transaction
+        RAISERROR('A user with this username already exists. Please choose another username.', 16, 1)
         ROLLBACK TRANSACTION
     END
-END;
-
---trigger verificar duplicate plant
-CREATE TRIGGER CheckDuplicatePlant
-ON Plants
-AFTER INSERT, UPDATE
+    ELSE
+    BEGIN
+        -- If the username does not exist, insert the new record
+        INSERT INTO MarketPlants.Utilizador(Username, Senha)
+        SELECT Username, Senha FROM inserted
+    END
+END
+--
+Use MarketPlants
+Go
+--Trigger2 - Check duplicate Plants
+CREATE OR ALTER TRIGGER trgCheckDuplicatePlant ON MarketPlants.Planta
+INSTEAD OF INSERT
 AS
 BEGIN
-    IF EXISTS (
-        SELECT NomeCientifico
-        FROM Plants
-        GROUP BY NomeCientifico
-        HAVING COUNT(*) > 1
-    )
+    -- If there's no duplicate scientific name
+    IF NOT EXISTS (SELECT 1 FROM MarketPlants.Planta p JOIN inserted i ON p.NomeCientifico = i.NomeCientifico)
     BEGIN
-        RAISERROR ('Já existe uma planta com o mesmo nome científico.', 16, 1)
-        ROLLBACK TRANSACTION
+        -- Proceed with the insert operation
+        INSERT INTO MarketPlants.Planta(NomeCientifico, NomeComum, Reino, Familia, Ambiente, Caracteristicas, ID_Artigo)
+        SELECT NomeCientifico, NomeComum, Reino, Familia, Ambiente, Caracteristicas, ID_Artigo FROM inserted
     END
-END;
-
---trigger verificar favorites
-CREATE TRIGGER CheckFavoritePlant
-ON Favorites
-AFTER INSERT
+    ELSE
+    BEGIN
+        -- Handle the error in a way that makes sense for your application
+        RAISERROR ('A plant with this scientific name already exists.', 16, 1)
+    END
+END
+--
+--Trigger 3 - Check se artigo já em carrinho
+CREATE TRIGGER CheckArtigoInCarrinho
+ON MarketPlants.CarrinhoArtigo
+FOR INSERT
 AS
 BEGIN
     IF EXISTS (
         SELECT 1
-        FROM Favorites f
-        INNER JOIN Plants p ON f.PlantID = p.PlantID
-        WHERE f.UserID = (SELECT UserID FROM inserted)
-          AND p.PlantID = (SELECT PlantID FROM inserted)
+        FROM inserted i
+        INNER JOIN MarketPlants.CarrinhoArtigo ca ON i.ID_Artigo = ca.ID_Artigo
+        WHERE i.ID_Carrinho = ca.ID_Carrinho
     )
     BEGIN
-        RAISERROR ('Esta planta já está nos favoritos.',
-
---verificar planta cart ja tem
-CREATE TRIGGER CheckDuplicatePlantInCart
-ON CartItems
-AFTER INSERT
-AS
-BEGIN
-    IF EXISTS (
-        SELECT 1
-        FROM CartItems ci
-        INNER JOIN Plants p ON ci.PlantID = p.PlantID
-        WHERE ci.CartID = (SELECT CartID FROM inserted)
-          AND p.PlantID = (SELECT PlantID FROM inserted)
-    )
-    BEGIN
-        RAISERROR ('Esta planta já foi adicionada ao carrinho de compras.', 16, 1)
+        RAISERROR ('Artigo already exists in Cart.', 16, 1)
         ROLLBACK TRANSACTION
     END
-END;
+END
+--

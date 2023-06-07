@@ -10,9 +10,6 @@
     <Compile Update="EntryPoint.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Favourites.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Home.cs">
       <SubType>Form</SubType>
     </Compile>
