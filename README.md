@@ -23,10 +23,10 @@ MarketPlants is an advanced .NET 6 application designed to facilitate the buying
 
 2. **Database Setup:**
 - Install SQL Server and create a new database using the `DatabaseSetup.sql` script.
-- Execute the SQL scripts in the `/Db` directory to set up tables, insert initial data, and configure stored procedures and triggers.
+- Execute the SQL scripts in the `/db` directory to set up tables, insert initial data, and configure stored procedures and triggers.
 3. **Application Configuration:**
 - Open the solution in Visual Studio.
-- Update the connection string in `appsettings.json` to match your SQL Server instance.
+- Update the connection string to match your SQL Server instance.
 - Build and run the application.
 
 ## Database Design
